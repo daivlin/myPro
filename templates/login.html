@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">
+$(function(){
+    $("#nav-login").addClass("active");
+});
+</script>
+<div class="pure-g" style="margin:10em 2em;">
+    <div class="pure-u-1 pure-u-md-1-5"></div>
+    <div class="pure-u-1 pure-u-md-3-5">
+        <div class="post-category-type">登录</div>
+        <form method="post" id="form" class="pure-form">
+            <div class="clearBoth"></div>
+            <input type="text" class="pure-input-1" id="userName" placeholder=" 用户名" name="userName" autocomplete="off" />
+            <div class="clearBoth"></div>
+            <input type="password" class="pure-input-1" placeholder="密码" id="userPw" name="userPw" autocomplete="off" />
+            <div class="clearBoth"></div>
+            <button type="submit" class="pure-button" id="submit" data-loading-text="正在提交...">登录</button>
+        </form>    
+    </div>
+    <div class="pure-u-1 pure-u-md-1-5"></div>
+</div>        
+        
+{% endblock %}

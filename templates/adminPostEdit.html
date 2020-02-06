@@ -1,0 +1,89 @@
+{% extends "base.html"%}
+{% block content %}
+<script type="text/javascript" src="/static/nicEdit/nicEdit.js"></script><!--引用nicEdit-->
+<script type="text/javascript">
+bkLib.onDomLoaded(function() {
+    new nicEditor({
+        iconsPath : '/static/nicEdit/nicEditorIcons.gif',
+        uploadURI : '/admin/uploadImg',
+    }).panelInstance('content');
+});
+</script>
+<div class="post-category-type">修改文章</div>
+<div class="post">
+    <form method="post" id="form" class="pure-form pure-form-stacked">
+
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>分类</label></div>
+            <div class="pure-u-22-24">
+                <select name="category">
+                    <option value="lifeTime"
+                    {% if "lifeTime" == post.category %}
+                        selected="selected"
+                    {% endif %}
+                    >路过时光</option>
+                    <option value="movie"
+                    {% if "movie" == post.category %}
+                        selected="selected"
+                    {% endif %}
+                    >电影</option>
+                    <option value="music"
+                    {% if "music" == post.category %}
+                        selected="selected"
+                    {% endif %}
+                    >音乐</option>
+                </select>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>题图url</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="题图" name="headerImg" value="{{ post.headerImg }}" autocomplete="off"></div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>天气</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="天气" name="weather" value="{{ post.weather }}" autocomplete="off"></div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>地点</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="地点" name="doLocation" value="{{ post.doLocation }}" autocomplete="off"></div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>阅读</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="阅读" name="readed" value="{{ post.readed }}" autocomplete="off"></div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>饮食(|)</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="饮食" name="foods" value="{{ post.foods }}" autocomplete="off"></div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>心情</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="心情" name="status" value="{{ post.status }}" autocomplete="off"></div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>标签(|)</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="标签" name="tags" value="{{ post.tags }}" autocomplete="off"></div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>主题</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="主题" name="title" value="{{ post.title }}" id="subject" autocomplete="off"></div>
+        </div>
+
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>题记</label></div>
+            <div class="pure-u-22-24"><input type="text" style="width:100%;" placeholder="题记" name="thinking" value="{{ post.thinking }}" id="note" autocomplete="off"></div>
+        </div>
+        
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label>内容</label></div>
+            <div class="pure-u-22-24"><textarea placeholder="内容" name="content" id="content" style="width:100%;">{{ post.content }}</textarea></div>
+        </div>            
+
+        <div class="pure-g">
+            <div class="pure-u-2-24"><label for="inputPassword3"></label></div>
+            <div class="pure-u-22-24"><button type="submit" class="pure-button" id="submit" data-loading-text="submiting...">提交</button></div>
+        </div>
+    </form>
+    <br />
+</div>
+
+{% endblock %}

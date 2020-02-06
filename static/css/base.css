@@ -1,0 +1,301 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family:"文泉驿微米黑","黑体","微软呀黑";
+}
+body{
+    margin: 20px auto;
+    max-width: 1040px;
+    background-color:#E6E6E6;
+    font-size:10pt;
+}
+a{
+    text-decoration:none;
+}
+.clearBoth{
+    clear:both;
+    height:10px;
+}
+.container{
+    padding:40px;
+    background-color:#FFF;
+}
+.header{
+    height:100px;
+}
+.blogName{
+    font-size:1.8em;
+}
+.blogName:hover{
+    color:#21759b;
+}
+.blogNote{
+    margin-top:0.8em;
+    color:#757575;
+}
+.menu{
+    height:50px;
+    line-height:50px;
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    margin-bottom:30px;
+}
+.menu,ul,li{
+}
+.menu a{
+    border-bottom: 0;
+    color: #6a6a6a;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-right: 20px;
+}
+.active{
+    font-weight: bold;
+}
+
+.content-nav img{
+    max-width: 100%;
+}
+img{
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.foot{
+    font-size:10pt;
+    margin-top: 20px;
+}
+.thinking{
+    margin:0.5em 0;
+}
+.index-nav{
+    padding-bottom:1.2em;
+}
+.index-nav a{
+    color: #21759b;
+}
+.index-nav a:hover {
+    color: #E7AA3D;
+}
+.post {
+    padding-bottom: 2em;
+}
+.post-title {
+    margin:1em 0;
+    font-size: 12pt;
+    color: #21759b;
+}
+.post-title a{
+    color: #21759b;
+}
+.post-title a:hover {
+    color: #E7AA3D;
+}
+.post-title-img img{
+    max-width:100%;
+}
+.post-tag{
+    margin:1.5em 0;
+    font-weight:bold;
+    color:#21759b;
+}
+.post-tag-all{
+    margin-top:1em;
+    margin-right:0.5em;
+    float:left;
+    list-style:none;
+}
+.post-tag-filter a{
+    color: #21759b;
+}
+.post-tag-filter a:hover {
+    color: #E7AA3D;
+}
+.post-tag-filter li{
+    list-style:none;
+}
+.post-tag-filter-summary{
+    margin:1em 0;
+}
+.post-tag-filter li{
+    margin:0.5em 0;
+}
+.post-avatar {
+    border-radius: 50px;
+    float: right;
+    margin-left: 1em;
+}
+.post-description {
+    font-family: Georgia, "Cambria", serif;
+    color: #444;
+    line-height: 1.8em;
+}
+.post-detail .content{
+    margin-top:1em;
+    min-height:200px;
+}
+.post-detail .content img{
+    max-width:100%
+}
+.post-meta {
+    color: #999;
+    font-size: 90%;
+    margin: 20px 0;
+}
+
+.post-category {
+    margin-top:0.3em;   
+    height:1em;
+    margin-right:0.2em;
+    padding: 0.2em 1em;
+    color: #fff;
+    background: #999;
+    font-size: 80%;
+}
+.post-category-type{
+    color: #FFF;
+    width:80px;
+    height:25px;
+    line-height:22px;
+    padding-left:10px;
+    margin-bottom:5px;
+    font-size:1.2em;
+    font-family:"微软雅黑";
+    background-image: url("/static/images/post-category-bg.png") ;
+
+}
+.post-category-design {
+    background: #82A682;
+}
+.post-category-pure {
+    background: #4d85d1;
+}
+.post-category-yui {
+    background: #8156a7;
+}
+.post-category-js {
+    background: #df2d4f;
+}
+
+.post-images {
+    margin: 1em 0;
+}
+.post-image-meta {
+    margin-top: -3.5em;
+    margin-left: 1em;
+    color: #fff;
+    text-shadow: 0 1px 1px #333;
+}
+.post-hr{
+    padding-right:40px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.postDetail .summary{
+    font-size:10pt;
+    color:#7F7F7F;
+    height:20px;
+    line-height:20px;
+    margin-bottom:10px;
+}
+/* timeMachine */
+.timeMachine{
+    margin-bottom:50px;
+}
+.timeMachine li{
+    list-style:none;
+}
+.timeMachine .year{
+    font-size:16pt;
+}
+.timeMachine .result{
+    margin:1em 2em;
+}
+.timeMachineSeparation{
+    padding:0.5em 1em ;
+    margin:0 0.5em;
+    background-image:url(/static/images/timeMachineSeparation.jpg);
+}
+.timeMachineSeparationOver{
+    padding:0.5em 1em ;
+    margin:0 0.5em;
+    background-image:url(/static/images/timeMachineSeparationOver.jpg);
+}
+
+/* articleDetail */
+.articleDetail{
+    min-height:300px;
+}
+.articleDetail .note{
+    margin:40px 20px;
+    padding:40px 20px;
+    background-color:#F3F3F3;
+    font-size:11pt;
+    text-indent:10px;
+}
+
+.articleDetail .summary{
+    font-size:10pt;
+    color:#7F7F7F;
+    height:20px;
+    line-height:20px;
+    margin-bottom:10px;
+}
+.articleDetail .summary img{
+    height:20px;
+    line-height:20px;
+}
+.articleDetail .subject{
+    font-size:16pt;
+    margin-bottom:10px;
+}
+.articleDetail .content{
+    margin:0px 20px;
+    margin-bottom:50px;
+}
+.articleDetail .content img{
+    max-width:100%;
+}
+.articleDetail .content embed{
+    width:100%;
+}
+ 
+.pageNav div{
+    margin:1em 0;
+}
+.pageNav div a{
+    color: #21759b;
+}
+.pageNav div a:hover {
+    color: #E7AA3D;
+}
+
+.remind{
+    color:#C02F2F;
+}
+#menuMedia{
+    display:none;
+}
+@media screen and (max-width: 754px){
+    body{
+        margin: 0px auto;
+    }
+    .container{
+        padding:10px;
+        background-color:#FFF;
+    }
+    img{
+        max-width:100%;
+    }
+    #menuComputer{
+        display:none;
+    }
+    .menu{
+        height:30px;
+        line-height:30px;
+    }
+    #menuMedia{
+        display:block;
+}
+}
+

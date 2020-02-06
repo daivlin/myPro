@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <form method="post" class="pure-form">
+        <div>
+            {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {{ tdform.csrf_token }}
+        <div>{{ tdform.doTime.label }} {{ tdform.doTime }}</div>
+        <div>{{ tdform.content.label }} {{ tdform.content(size=50) }}</div>
+        
+
+        <input type="submit" class="pure-button" value="Submit"/>
+    </form>
+</div>
+{% endblock %}

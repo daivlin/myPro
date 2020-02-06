@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+    <title>稻草人的田野</title>    
+    <link rel="stylesheet" href="/static/css/pure.css">
+    <link rel="stylesheet" href="/static/css/grids-responsive-min.css">
+    <link rel="stylesheet" href="/static/css/icon.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="shortcut icon" href="/static/favicon.ico" >
+    <script type="text/javascript" src="/static/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="/static/js/index.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="blogName">稻草人的田野</div>
+        <div class="blogNote">有风，你看叶子飘摇不止</div>
+    </div>
+    <div class="menu">
+        <div class="pure-menu-horizontal" id="menuComputer">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item" id="nav-index"><a href="/">首页</a></li>
+                <li class="pure-menu-item" id="nav-timeMachine"><a href="/timeMachine">时光</a></li>
+                <li class="pure-menu-item" id="nav-about"><a href="/about">关于</a></li>
+                <li class="pure-menu-item"><a href="http://github.com/daivlin" target="_blank">myGithub</a></li>
+                <!-- if login -->
+                {% if session.get("userName","") %}
+                <li class="pure-menu-item" id="nav-adminPostAdd"><a style="color:red;" href="/adminPostAdd">新增文章</a></li>
+                <li class="pure-menu-item"><a style="color:red;"  href="/logout" onclick="return confirm('确认退出?')">登出</a></li>
+                {% endif %}
+                <!-- endif login-->
+            </ul>
+        </div>
+        <div class="pure-menu-horizontal" id="menuMedia">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item" id="nav-index"><a href="/">主</a></li>
+                <li class="pure-menu-item" id="nav-timeMachine"><a href="/timeMachine">忆</a></li>
+                <li class="pure-menu-item" id="nav-about"><a href="/about">我</a></li>
+                <li class="pure-menu-item"><a href="http://github.com/daivlin" target="_blank">G</a></li>
+                <!-- if login -->
+                {% if session.get("userName","") %}
+                <li class="pure-menu-item" id="nav-adminPostAdd"><a style="color:red;"  href="/adminPostAdd">增</a></li>
+                <li class="pure-menu-item"><a style="color:red;"  href="/logout" onclick="return confirm('确认退出?')">销</a></li>
+                {% endif %}
+                <!-- endif login-->
+            </ul>
+        </div>
+    </div>
+    <div class="content">{% block content %}{% endblock %}</div>
+    <div class="foot post-meta">
+        ©2020
+        {% if session.get("userName","") %}
+        DAIVLIN
+        {% else %}
+        <a href="/login" class="post-meta">DAIVLIN</a>
+        {% endif %}
+         -- 浏览：{{ get_visitor() }}
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">
+$(function(){
+    $("#nav-").addClass("active");
+});
+</script>
+<div class="post-category-type">标签</div>
+<div class="post-tag-filter">
+    <div class="post-tag-filter-summary">包含 <span class="remind">{{ tag }}</span> 标签的文章 <span class="remind">{{ posts|length }}</span> 条：</div>
+    {% for i in posts %}    
+        <li>
+            <a href="postDetail/{{i.id}}">【{{ tagsDict[i.category] }}】
+            {{ showTime(i.createTime) }} - 
+            {{ i.title }}</a>
+        </li>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

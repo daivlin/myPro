@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">
+$(function(){
+    $("#nav-").addClass("active");
+});
+</script>
+<div class="post-category-type">搜索</div>
+
+<div class="post-tag-filter">
+    <div>
+        <form action="/search" id="search_form" class="pure-form" >
+            <div class="input-group">
+                    <input type="text" placeholder="关键词" name="searchValue"  autocomplete="off"  style="width:100%;" value="{{ searchValue}}" />
+                <input type="submit" class="pure-button" value="搜索" >
+            </div>
+        </form>
+    </div>
+    {% if error %}
+        <div class="post-tag-filter-summary"> <span class="remind">{{error}}</span></div>
+    {% else %}
+        <div class="post-tag-filter-summary">搜索到包含 <span class="remind">{{ searchValue }}</span> 的文章 <span class="remind">{{ posts|length }}</span> 条：</div>
+        {% for i in posts %}    
+            <li>
+                <a href="postDetail/{{i.id}}">【{{ tagsDict[i.category] }}】
+                {{ showTime(i.createTime) }} - 
+                {{ i.title }}</a>
+            </li>
+        {% endfor %}
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

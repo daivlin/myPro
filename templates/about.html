@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+$(function(){
+    $("#nav-about").addClass("active");
+});
+</script>
+<div class="post-category-type">自白</div>
+<!-- if login -->
+{% if session.get("userName","") %}
+<div><a href="/adminAboutEdit"><css-icon class="icon-edit"></css-icon></a></div>
+{% endif %}
+<!-- endif login -->
+<div>
+    {{ markdown.markdown(webInfo.myInfo) | safe}}
+</div>
+
+{% endblock %}

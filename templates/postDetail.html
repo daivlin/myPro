@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="post-category-type">{{ tagsDict[post.category] }}</div>
+    <div class="post-detail">
+        <div class="post-title">{{ post.title }}</div>
+        <div class="post-meta">
+            {{ showTime(post.createTime) }} | {{ post.scan }} 次浏览 
+            <!-- if login -->
+            {% if session.get("userName","") %}
+            | <a href="/adminPostEdit/{{ post.id }}" class="post-meta">编辑</a>
+            | <a href="/adminPostDel/{{ post.id }}" onclick="return confirm('确定删除该文章 ?')" class="post-meta">删除</a>
+            {% endif %}
+            <!-- endif login -->
+        </div>
+        <div class="post-title-img"><img src="{{ post.headerImg }}"></div>
+        <div class="post-description storyContent">
+        {% if post.category == "lifeTime" %}
+            <div class="post-detail">天气：{{ post.weather }}</div>
+            <div class="post-detail">位置：{{ post.doLocation }}</div>
+            <div class="post-detail thinking">题记：<i>{{ post.thinking }}</i></div>
+        {% else %}
+            <div class="post-detail">天气：{{ post.weather }}</div>
+            <div class="post-detail">位置：{{ post.doLocation }}</div>
+            <div class="post-detail">时间：{{ post.doTime }}</div>
+            <div class="post-detail">分值：{{ post.score }}</div>
+            <div class="post-detail thinking">题记：<i>{{ post.thinking }}</i></div>
+        {% endif %}
+        </div>
+        <div class="content">{{ markdown.markdown(post.content) | safe | safe }}</div>
+        <div class="post-tag">
+        {% if post.tags %}
+            {% for j in post.tags.split(" ") %}<a class="post-category post-category-design" href="/tags?tag={{ j }}">{{ j }}</a>{% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    <hr />
+    <div class="pageNav">
+        {% if has_prev(post.id) %}
+        <div>上一篇：<a href="/postDetail/{{ has_prev(post.id).id }}">{{ has_prev(post.id).title }}</a></div>
+        {% else %}
+        <div>上一篇：没有了！</div>
+        {% endif %}
+        
+        {% if has_next(post.id) %}
+        <div>下一篇：<a href="/postDetail/{{ has_next(post.id).id }}">{{ has_next(post.id).title }}</a></div>
+        {% else %}
+        <div>下一篇：没有了！</div>
+        {% endif %}
+    </div>
+    <!--评论-->
+    <div class="comment">
+        <form>
+            <input name="story_id" type="hidden" value="1"/>
+            <div class="pure-form">
+                <textarea class="form-control" placeholder="评论,字数不少于6个" name="comment" id="comment" style="width:100%;height: 100px;" disabled="disabled"></textarea>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="attachlist_parent">
+                </div>
+                <div class="text-right">
+                    <button class="pure-button pure-button-primary" disabled="disabled"> 评论 </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+
+{% endblock %}

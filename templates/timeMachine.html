@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">
+$(function(){
+    $("#nav-timeMachine").addClass("active");
+});
+</script>
+<div class="post-category-type">时光</div>
+<div class="timeMachine">
+{% for i in years %}    
+    <li class="year">{{ i }}</li>
+    {% for j in get_article_by_year(i) %}
+        <li class="result">{{ showTime(j.createTime).split(" ")[0] }}<span class="overlink timeMachineSeparation"></span><a href="/postDetail/{{ j.id }}">{{ j.title }}</a></li>
+    {% endfor %}
+                    
+{% endfor %}
+</div>
+
+
+
+{% endblock %}

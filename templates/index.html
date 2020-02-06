@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+$(function(){
+    $("#nav-index").addClass("active");
+});
+</script>
+<div class="pure-g">
+    <div class="pure-u-1 pure-u-md-17-24 content-left">
+    <!-- A wrapper for all the blog posts -->
+        <div class="posts">
+        {% for i in postPages.items %}
+            <section class="post">
+                <div class="post-category-type"><span>{{ tagsDict[i.category] }}</span></div>
+                <div class="post-title"><a href="/postDetail/{{ i.id }}">{{ i.title }}</a></div>
+                <div class="post-title-img"><img src="{{ i.headerImg }}" ></div>
+                <div class="post-description storyContent">
+                {% if i.category == "lifeTime" %}
+                    <div class="post-detail"><css-icon class="icon-eye"></css-icon>：{{ i.weather }}</div>
+                    <div class="post-detail"><css-icon class="icon-location"></css-icon>：{{ i.doLocation }}</div>
+                    <div class="post-detail thinking"><css-icon class="icon-message"></css-icon>：<i>{{ i.thinking }}</i></div>
+                {% else %}
+                    <div class="post-detail"><css-icon class="icon-eye"></css-icon>：{{ i.weather }}</div>
+                    <div class="post-detail"><css-icon class="icon-location"></css-icon>：{{ i.doLocation }}</div>
+                    <div class="post-detail"><css-icon class="icon-time"></css-icon>：{{ i.doTime }}</div>
+                    <div class="post-detail"><css-icon class="icon-emoji"></css-icon>：{{ i.score }}</div>
+                    <div class="post-detail thinking"><css-icon class="icon-message"></css-icon>：<i>{{ i.thinking }}</i></div>
+                {% endif %}
+                </div>
+                <div class="post-meta">
+                        本条目发布于{{ showTime(i.createTime) }}。
+                        {% if i.tags %}
+                        被贴了{% for j in i.tags.split(" ") %}<a class="post-category post-category-design" href="/tags?tag={{ j }}">{{ j }}</a>{% endfor %}标签。
+                        {% endif %}
+                </div>
+                <div class="post-hr"></div>
+            </section>
+        {% endfor %}
+        </div>
+        <div class="pure-g index-nav">
+            <div class="pure-u-8-24">
+                {% if postPages.has_next %}
+                <a href="?page={{ postPages.next_num }}"><css-icon class="icon-arrow-left"></css-icon>过去的</a>
+                {% endif %}
+            </div>
+            <div class="pure-u-8-24"></div>
+            <div class="pure-u-8-24" style="text-align:right;">
+                {% if postPages.has_prev %}
+                <a href="?page={{ postPages.prev_num }}">未来的<css-icon class="icon-arrow-right"></css-icon></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- 分隔1列 -->
+    <div class="pure-u-1 pure-u-md-1-24 content-nav"></div>
+    <!--右侧导航-->
+    <div class="pure-u-1 pure-u-md-6-24 content-nav">
+        <div><img src="/static/images/myAvatar.jpg"/></div>
+        <div class="clearBoth"></div>
+        <div>
+            <form action="/search" id="search_form" class="pure-form" >
+                <div class="input-group">
+                    <input type="text" placeholder="关键词" name="searchValue"  autocomplete="off"  style="width:100%;" />
+                    <input type="submit" class="pure-button" value="搜索" >
+                </div>
+            </form>
+        </div>
+
+        <div class="clearBoth"></div>
+        <div class="post-tag"><span>标签</span></div>
+        <div>
+        {% for i in get_tags() %}
+            <li class="post-tag-all"><a class="post-category post-category-design" href="/tags?tag={{ i }}" >{{ i }}</a></li>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
