@@ -22,3 +22,5 @@
         将存储浏览者数量的visitor.txt放入data文件夹。
         将mistune模块更换为markdown模块：在使用mistune模块时，如果原来就是html代码时，不能转换。用markdown模块则无此问题，且markdown模块可以设置html，如：<a href="#" target="_blank">在新窗口中打开链接</a>。
         修复首页标签重复的bug，使用set去重！
+    - 2020-02-06
+        将项目添加至git
